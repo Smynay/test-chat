@@ -1,14 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { initialState } from "./constants";
-import { USER_SLICE_NAME } from "./constants";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { initialState, USER_SLICE_NAME } from "./constants";
+import { User } from "./types";
 
 const userSlice = createSlice({
   name: USER_SLICE_NAME,
   initialState,
   reducers: {
-    init: () => {},
+    setUserData: (state, action: PayloadAction<User>) => {
+      state.userData = action.payload;
+      state.isAuthorized = true;
+    },
   },
 });
 
-export const { init } = userSlice.actions;
+export const { setUserData } = userSlice.actions;
 export const { reducer: userReducer } = userSlice;

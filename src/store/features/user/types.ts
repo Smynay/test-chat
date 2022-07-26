@@ -1,5 +1,6 @@
 export type UserState = {
   userData?: User;
+  isAuthorized: boolean;
 };
 
 export interface User {

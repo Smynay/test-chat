@@ -4,6 +4,7 @@ import { useSocketSubscriptions } from "./common/hooks";
 import { Box, Container } from "@mui/material";
 import { Chat } from "./modules";
 import { Route, Routes } from "react-router-dom";
+import { Auth } from "./modules/auth";
 
 export function App() {
   useSocketSubscriptions();
@@ -16,7 +17,8 @@ export function App() {
       <Box mt={4}>
         <Container maxWidth="sm">
           <Routes>
-            <Route index element={<Chat />} />
+            <Route index element={<Auth />} />
+            <Route path={"chat"} element={<Chat />} />
           </Routes>
         </Container>
       </Box>

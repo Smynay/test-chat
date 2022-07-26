@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { MessageForm, MessageRoll } from "../../components/organisms";
 import { send } from "../../../store/features/chat";
+import { Navigate } from "react-router-dom";
 
 export const Chat: FC = () => {
   const chat = useAppSelector((state) => state.chat);
@@ -21,6 +22,10 @@ export const Chat: FC = () => {
       );
     }
   };
+
+  if (!user.isAuthorized) {
+    return <Navigate to="/" replace={true} />;
+  }
 
   return (
     <Box minHeight={"300px"} height={"100%"}>
