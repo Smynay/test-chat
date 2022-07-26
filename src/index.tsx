@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import { ServiceProvider } from "./ui/common/providers";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { defaultTheme } from "./ui/common/assets";
+import { BrowserRouter } from "react-router-dom";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -14,10 +15,12 @@ const root = createRoot(container);
 root.render(
   <Provider store={store}>
     <ServiceProvider>
-      <ThemeProvider theme={defaultTheme}>
-        <CssBaseline></CssBaseline>
-        <App />
-      </ThemeProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={defaultTheme}>
+          <CssBaseline></CssBaseline>
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
     </ServiceProvider>
   </Provider>
 );

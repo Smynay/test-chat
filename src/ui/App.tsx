@@ -3,6 +3,7 @@ import "./App.css";
 import { useSocketSubscriptions } from "./common/hooks";
 import { Box, Container } from "@mui/material";
 import { Chat } from "./modules";
+import { Route, Routes } from "react-router-dom";
 
 export function App() {
   useSocketSubscriptions();
@@ -12,11 +13,13 @@ export function App() {
       <Box height={"60px"} bgcolor={"primary"}>
         <Container fixed></Container>
       </Box>
-      <Container maxWidth="sm">
-        <Box my={4} maxWidth="100%" overflow={"auto"}>
-          <Chat />
-        </Box>
-      </Container>
+      <Box mt={4}>
+        <Container maxWidth="sm">
+          <Routes>
+            <Route index element={<Chat />} />
+          </Routes>
+        </Container>
+      </Box>
     </div>
   );
 }
