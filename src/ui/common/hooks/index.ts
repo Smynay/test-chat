@@ -1,10 +1,10 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import type { AppDispatch, RootState } from "../store";
-import { AppServiceNames, AppServices } from "../services";
+import { AppDispatch, RootState } from "../../../store";
 import { useContext, useEffect } from "react";
-import { ServiceContext } from "../contexts";
-import { receive } from "../store/features/chat";
-import { ChatEventTypes, Message } from "../store/features/chat/types";
+import { ServiceContext } from "../providers/contexts";
+import { AppServiceNames, AppServices } from "../../../services";
+import { ChatEventTypes, Message } from "../../../store/features/chat/types";
+import { receive } from "../../../store/features/chat";
 
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch = () => useDispatch<AppDispatch>();

@@ -4,9 +4,9 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import { App } from "./ui/App";
 import reportWebVitals from "./reportWebVitals";
-import { ServiceProvider } from "./providers";
+import { ServiceProvider } from "./ui/common/providers";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { defaultTheme } from "./assets";
+import { defaultTheme } from "./ui/common/assets";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);

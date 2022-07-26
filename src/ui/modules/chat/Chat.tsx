@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Box } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { MessageForm, MessageRoll } from "../../components/organisms";
 import { send } from "../../../store/features/chat";
 

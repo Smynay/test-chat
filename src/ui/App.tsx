@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { useSocketSubscriptions } from "../app/hooks";
+import { useSocketSubscriptions } from "./common/hooks";
 import { Box, Container } from "@mui/material";
 import { Chat } from "./modules";
 
