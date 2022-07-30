@@ -2,9 +2,8 @@ import React from "react";
 import "./App.css";
 import { useSocketSubscriptions } from "./common/hooks";
 import { Box, Container } from "@mui/material";
-import { Chat } from "./modules";
+import { Auth, Chat } from "./modules";
 import { Route, Routes } from "react-router-dom";
-import { Auth } from "./modules/auth";
 
 export function App() {
   useSocketSubscriptions();
