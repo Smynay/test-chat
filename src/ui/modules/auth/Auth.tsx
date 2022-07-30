@@ -1,19 +1,46 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import { Field, Form } from "react-final-form";
 import { required } from "../../common/utils";
-import { useAppDispatch } from "../../common/hooks";
+import { useAppDispatch, useAppService } from "../../common/hooks";
 import { setUserData } from "../../../store/features/user";
-import { v4 as uuid } from "uuid";
 import { useNavigate } from "react-router-dom";
+import { AppServiceNames } from "../../../services";
+import { LocalStorageKeys } from "../../../services/storage/types";
+import { getId } from "../../../services/utils";
 
 export const Auth: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const localStorageService = useAppService(
+    AppServiceNames.LOCAL_STORAGE_SERVICE
+  );
+
+  const onAuthorize = (): void => {
+    navigate("chat", { replace: true });
+  };
+
+  useEffect(() => {
+    const userDataFromLocalStorage = localStorageService.getItem(
+      LocalStorageKeys.USER_DATA
+    );
+
+    if (userDataFromLocalStorage) {
+      dispatch(setUserData(userDataFromLocalStorage));
+      onAuthorize();
+    }
+  }, [onAuthorize, dispatch]);
 
   const onSubmit = (values: any) => {
-    dispatch(setUserData({ id: uuid(), name: values.nickname }));
-    navigate("chat", { replace: true });
+    const newUserData = {
+      id: getId(),
+      name: values.nickname,
+    };
+
+    dispatch(setUserData(newUserData));
+    localStorageService.setItem(LocalStorageKeys.USER_DATA, newUserData);
+
+    onAuthorize();
   };
 
   return (
