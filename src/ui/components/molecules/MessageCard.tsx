@@ -12,15 +12,21 @@ export const MessageCard: FC<IProps> = ({ message }) => {
   return (
     <Card elevation={2}>
       <Box p={2}>
-        <Typography variant={"body2"} fontWeight={"bold"} gutterBottom>
-          {senderName}
-        </Typography>
-        <Typography variant={"body2"}>{text}</Typography>
-        <Box display={"flex"} justifyContent={"flex-end"}>
+        <Box
+          display={"flex"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          mb={1}
+        >
+          <Typography variant={"body2"} fontWeight={"bold"}>
+            {senderName}
+          </Typography>
           <Typography variant={"caption"} color={"text.secondary"}>
             {new Date(timestamp).toLocaleTimeString()}
           </Typography>
         </Box>
+
+        <Typography variant={"body2"}>{text}</Typography>
       </Box>
     </Card>
   );
