@@ -41,7 +41,10 @@ export const Chat: FC = () => {
         overflow={"auto"}
         ref={rollRef}
       >
-        <MessageRoll messages={chat.messages} />
+        <MessageRoll
+          currentUserId={user.userData?.id}
+          messages={chat.messages}
+        />
       </Box>
       <MessageForm onSend={handleSend} />
     </Box>
