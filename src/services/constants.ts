@@ -1,8 +1,8 @@
 import { SocketService } from "./socket";
-import { AppServiceNames } from "./types";
 import { LocalStorageService, SessionStorageService } from "./storage";
+import { AppServices } from "./types";
 
-export const APP_SERVICES: Record<AppServiceNames, any> = {
+export const APP_SERVICES: AppServices = {
   SocketService: new SocketService(
     `http://${process.env.REACT_APP_PUBLIC_IP || "localhost"}:5000`
   ),

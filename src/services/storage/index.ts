@@ -1,5 +1,5 @@
 import { StorageService } from "./storageService";
-import { LocalStorageKeys, SessionStorageKeys } from "./types";
+import { LocalStorageData, SessionStorageData } from "./types";
 
-export const LocalStorageService = StorageService<LocalStorageKeys>;
-export const SessionStorageService = StorageService<SessionStorageKeys>;
+export const LocalStorageService = StorageService<LocalStorageData>;
+export const SessionStorageService = StorageService<SessionStorageData>;

@@ -1,6 +1,11 @@
-import { APP_SERVICES } from "./constants";
+import { ISocketService } from "./socket";
+import { LocalStorageService, SessionStorageService } from "./storage/types";
 
-export type AppServices = typeof APP_SERVICES;
+export interface AppServices {
+  [AppServiceNames.SOCKET_SERVICE]: ISocketService;
+  [AppServiceNames.LOCAL_STORAGE_SERVICE]: LocalStorageService;
+  [AppServiceNames.SESSION_STORAGE_SERVICE]: SessionStorageService;
+}
 
 export enum AppServiceNames {
   SOCKET_SERVICE = "SocketService",

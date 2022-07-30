@@ -1,15 +1,21 @@
-import { LocalStorageKeys, SessionStorageKeys, Storage } from "./types";
+import { LocalStorageData, SessionStorageData } from "./types";
 
 export class StorageService<
-  Keys extends LocalStorageKeys | SessionStorageKeys
+  DataType extends LocalStorageData | SessionStorageData
 > {
-  constructor(private storage: Storage<Keys>) {}
+  constructor(private storage: Storage) {}
 
-  getItem(key: Keys) {
-    return this.storage.getItem(key);
+  getItem<T extends keyof DataType>(key: T): DataType[T] | null {
+    const output = this.storage.getItem(key as string);
+
+    if (output) {
+      return JSON.parse(output) as DataType[T];
+    }
+
+    return output as null;
   }
 
-  setItem(key: Keys, value: string) {
-    return this.storage.setItem(key, value);
+  setItem<T extends keyof DataType>(key: keyof DataType, value: DataType[T]) {
+    return this.storage.setItem(key as string, JSON.stringify(value));
   }
 }
