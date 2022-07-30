@@ -11,7 +11,7 @@ export const MessageRoll: FC<IProps> = ({ messages }) => {
   return (
     <>
       {messages.map((message, index) => (
-        <Box mt={2} key={index}>
+        <Box mt={index === 0 ? 0 : 2} key={index}>
           <MessageCard message={message} />
         </Box>
       ))}
