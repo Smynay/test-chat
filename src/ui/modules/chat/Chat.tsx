@@ -37,6 +37,7 @@ export const Chat: FC = () => {
       <Box height={"800px"} display={"flex"} flexDirection={"column"}>
         <Box
           flexGrow={1}
+          py={1}
           position={"relative"}
           maxHeight={"100%"}
           overflow={"auto"}
@@ -47,7 +48,13 @@ export const Chat: FC = () => {
             messages={chat.messages}
           />
         </Box>
-        <MessageForm onSend={handleSend} />
+        <Box
+          sx={{
+            borderTop: "1px solid rgba(0, 0, 0, 0.25)",
+          }}
+        >
+          <MessageForm onSend={handleSend} />
+        </Box>
       </Box>
     </Card>
   );
