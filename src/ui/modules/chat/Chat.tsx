@@ -33,7 +33,10 @@ export const Chat: FC = () => {
   }
 
   return (
-    <Card elevation={3} sx={{ bgcolor: "#005da8" }}>
+    <Card
+      elevation={3}
+      sx={(theme) => ({ bgcolor: theme.palette.primary.main })}
+    >
       <Box height={"800px"} display={"flex"} flexDirection={"column"}>
         <Box
           flexGrow={1}
@@ -49,9 +52,9 @@ export const Chat: FC = () => {
           />
         </Box>
         <Box
-          sx={{
-            borderTop: "1px solid rgba(0, 0, 0, 0.25)",
-          }}
+          sx={(theme) => ({
+            borderTop: `1px solid ${theme.palette.divider}`,
+          })}
         >
           <MessageForm onSend={handleSend} />
         </Box>

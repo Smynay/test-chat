@@ -18,4 +18,8 @@ export class StorageService<
   setItem<T extends keyof DataType>(key: keyof DataType, value: DataType[T]) {
     return this.storage.setItem(key as string, JSON.stringify(value));
   }
+
+  removeItem<T extends keyof DataType>(key: T) {
+    this.storage.removeItem(key as string);
+  }
 }

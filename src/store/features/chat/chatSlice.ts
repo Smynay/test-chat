@@ -17,8 +17,12 @@ const chatSlice = createSlice({
         action.payload
       );
     },
+    resetSlice: (state) => {
+      state.messages = initialState.messages;
+      state.status = initialState.status;
+    },
   },
 });
 
-export const { receive, init, send } = chatSlice.actions;
+export const { receive, init, send, resetSlice } = chatSlice.actions;
 export const { reducer: chatReducer } = chatSlice;

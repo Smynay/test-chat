@@ -10,8 +10,12 @@ const userSlice = createSlice({
       state.userData = action.payload;
       state.isAuthorized = true;
     },
+    resetUserData: (state) => {
+      state.userData = undefined;
+      state.isAuthorized = false;
+    },
   },
 });
 
-export const { setUserData } = userSlice.actions;
+export const { setUserData, resetUserData } = userSlice.actions;
 export const { reducer: userReducer } = userSlice;

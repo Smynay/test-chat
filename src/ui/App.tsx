@@ -4,15 +4,14 @@ import { useSocketSubscriptions } from "./common/hooks";
 import { Box, Container } from "@mui/material";
 import { Auth, Chat } from "./modules";
 import { Route, Routes } from "react-router-dom";
+import { AppHeader } from "./components/organisms";
 
 export function App() {
   useSocketSubscriptions();
 
   return (
     <div className="App">
-      <Box height={"60px"} bgcolor={"primary"}>
-        <Container fixed></Container>
-      </Box>
+      <AppHeader />
       <Box mt={4}>
         <Container maxWidth="sm">
           <Routes>
