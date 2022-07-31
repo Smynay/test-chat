@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useCallback, useEffect } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import { Field, Form } from "react-final-form";
 import { required } from "../../common/utils";
@@ -16,9 +16,9 @@ export const Auth: FC = () => {
     AppServiceNames.LOCAL_STORAGE_SERVICE
   );
 
-  const onAuthorize = (): void => {
+  const onAuthorize = useCallback((): void => {
     navigate("chat", { replace: true });
-  };
+  }, [navigate]);
 
   useEffect(() => {
     const userDataFromLocalStorage = localStorageService.getItem(
@@ -29,7 +29,7 @@ export const Auth: FC = () => {
       dispatch(setUserData(userDataFromLocalStorage));
       onAuthorize();
     }
-  }, [onAuthorize, dispatch]);
+  }, [onAuthorize, dispatch, localStorageService]);
 
   const onSubmit = (values: any) => {
     const newUserData = {

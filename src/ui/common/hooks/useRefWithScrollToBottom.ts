@@ -9,10 +9,12 @@ export const useRefWithScrollToBottom = () => {
   };
 
   useEffect(() => {
+    const tempRef = ref.current;
+
     ref.current?.addEventListener("DOMNodeInserted", handler);
 
     return () => {
-      ref.current?.removeEventListener("DOMNodeInserted", handler);
+      tempRef?.removeEventListener("DOMNodeInserted", handler);
     };
   }, []);
 
