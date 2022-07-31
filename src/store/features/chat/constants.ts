@@ -11,5 +11,6 @@ export const fakeMessage: Message = {
 
 export const initialState: ChatState = {
   messages: [fakeMessage, fakeMessage, fakeMessage, fakeMessage],
+  activeUsers: [],
   status: ChatStatus.INITIALIZING,
 };

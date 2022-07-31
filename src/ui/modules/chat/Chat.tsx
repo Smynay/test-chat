@@ -4,6 +4,7 @@ import {
   useAppDispatch,
   useAppSelector,
   useRefWithScrollToBottom,
+  useSocketSubscriptions,
 } from "../../common/hooks";
 import { MessageForm, MessageRoll } from "../../components/organisms";
 import { send } from "../../../store/features/chat";
@@ -14,6 +15,8 @@ export const Chat: FC = () => {
   const user = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const rollRef = useRefWithScrollToBottom();
+
+  useSocketSubscriptions();
 
   const handleSend = (text: string) => {
     if (user.userData) {

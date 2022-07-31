@@ -16,9 +16,18 @@ export interface Message {
 export interface ChatState {
   messages: Message[];
   status: ChatStatus;
+  activeUsers: ChatUser[];
 }
 
 export enum ChatEventTypes {
   SEND_MESSAGE = "message:send",
   RECEIVE_MESSAGE = "message:receive",
+  CONNECTED = "chat-user:connected",
+  DISCONNECTED = "chat-user:disconnected",
+}
+
+export interface ChatUser {
+  senderId: ID;
+  senderName: string;
+  socketId: ID;
 }
