@@ -39,7 +39,7 @@ export const MessageForm: FC<IProps> = ({ onSend }) => {
         ></TextareaAutosize>
       </Box>
       <Box p={2} pl={1}>
-        <Button variant={"contained"} color={"primary"} onClick={handleSend}>
+        <Button variant={"contained"} color={"warning"} onClick={handleSend}>
           Send
         </Button>
       </Box>

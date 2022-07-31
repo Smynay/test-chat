@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Box } from "@mui/material";
+import { Box, Card } from "@mui/material";
 import {
   useAppDispatch,
   useAppSelector,
@@ -33,20 +33,22 @@ export const Chat: FC = () => {
   }
 
   return (
-    <Box height={"800px"} display={"flex"} flexDirection={"column"}>
-      <Box
-        flexGrow={1}
-        position={"relative"}
-        maxHeight={"100%"}
-        overflow={"auto"}
-        ref={rollRef}
-      >
-        <MessageRoll
-          currentUserId={user.userData?.id}
-          messages={chat.messages}
-        />
+    <Card elevation={3} sx={{ bgcolor: "#005da8" }}>
+      <Box height={"800px"} display={"flex"} flexDirection={"column"}>
+        <Box
+          flexGrow={1}
+          position={"relative"}
+          maxHeight={"100%"}
+          overflow={"auto"}
+          ref={rollRef}
+        >
+          <MessageRoll
+            currentUserId={user.userData?.id}
+            messages={chat.messages}
+          />
+        </Box>
+        <MessageForm onSend={handleSend} />
       </Box>
-      <MessageForm onSend={handleSend} />
-    </Box>
+    </Card>
   );
 };
